@@ -1,5 +1,9 @@
 <% include ../partials/header.ejs %>
 
+
+<button class="btn waves-effect waves-light">Back</button>
+
+
 <h3><%= movieData.Title %></h3>
 <form action="/favorites" method="POST">
 	<input type="hidden" name="imdbID" value="<%= movieData.imdbID %>" />

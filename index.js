@@ -5,10 +5,12 @@ var bodyParser = require('body-parser');
 var request = require("request");
 var db = require('./models');
 
+
 //initiate app
-app.set("view engine", "ejs");
+app.set("view engine", 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/static'));
+
 
 //home page
 app.get('/', function(req, res) {

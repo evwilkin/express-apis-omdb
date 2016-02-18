@@ -6,7 +6,9 @@ var db = require('../models');
 app.set('view engine', 'ejs');
 
 router.get("/", function(req, res) {
-	db.favorite.findAll().then(function(films) {
+	db.favorite.findAll({
+		include: [db.tag]
+	}).then(function(films) {
 		res.render('favorites/index.ejs', {films: films})
 	});
 });
@@ -41,7 +43,7 @@ router.post('/:id/comments', function(req, res) {
 	db.comment.create({
 		author: req.body.name,
 		text: req.body.newComment,
-		favoriteId: req.params.id
+		favoriteId: parseInt(req.params.id)
 	}).then(function() {
 		res.redirect('/favorites/'+req.params.id+'/comments');
 	});

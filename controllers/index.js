@@ -1,8 +1,12 @@
 var express = require('express');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var app = express();
 var router = express.Router();
 var request = require('request');
 var db = require('../models');
+
+app.use(cookieParser());
 
 
 router.get('/:id', function(req, res) {
